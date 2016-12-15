@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title> Unix Timestamp Builder </title>
+
+    <link rel="icon" type="image/png" href="./icon.png" />
+    <meta property="og:title" content="Unix Timestamp Builder"/>
+    <meta property="og:description" content="Easier way to create and parse Unix Timestamps."/>
+
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script type="text/javascript" src="./dist/timestamp-plus.js"></script>
+</head>
+<body>
+<div class="container">
+<header>
+    <h1 class="main-heading">Unix Timestamp Builder</h1>
+</header>
+<div>
+    <p>
+     <strong>Unix Timestamp</strong>, also known as Unix Time, or Epoch Time, is the representation of time instants as the number of seconds passed since January 1, 1970 (UTC). It's often preferred as a time storage format because of its timezone-independent nature. An integer representation, however, makes it cumbersome to query on the data type. This builder is a small app to address that problem.
+     It makes it easier to parse and create Unix timestamps and see their equivalent dates in different timezones.
+    </p>
+</div>
+<div class="row spacer">
+   <div class="four columns">
+        <div class="unix-ts-label" id="parsedDate"></div>
+        <select class="timezone-selector u-full-width" id="ts-timezones" class="u-full-width"></select>
+    </div>
+
+    <div class="eight columns text-right">
+        <div class="unix-ts-label">Unix Timestamp (in seconds)</div><br>
+        <input class="unix-ts-display" type="text" class="form-control center" id="unix-ts">
+    </div>
+</div>
+
+<div class="row">
+    <div class="eleven columns">
+        <input id="ts-year"  class="slide-blue" name="date-display" type="custom-range" min="1970" max="2038" step="1">
+    </div>
+    <div class="one columns">
+        <div class="unix-ts-info" id="ts-year-disp"></div>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="eleven columns">
+        <input id="ts-month"  class="slide-blue" name="date-display" type="custom-range" min="0" max="11" step="1">
+    </div>
+    <div class="one columns">
+        <div class="unix-ts-info" id="ts-month-disp"></div>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="eleven columns">
+        <input id="ts-date"   class="slide-blue" name="date-display" type="custom-range" min="1" max="31" step="1">
+    </div>
+    <div class="one columns">
+        <div class="unix-ts-info" id="ts-date-disp"></div>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="eleven columns">
+        <input id="ts-hour"   class="slide-blue" name="date-display" type="custom-range" min="0" max="24" step="1">
+    </div>
+    <div class="one columns">
+        <div class="unix-ts-info" id="ts-hour-disp"></div>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="eleven columns">
+        <input id="ts-minute" class="slide-blue" name="date-display" type="custom-range" min="0" max="60" step="1">
+    </div>
+    <div class="one columns">
+        <div class="unix-ts-info" id="ts-minute-disp"></div>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="eleven columns">
+        <input id="ts-second" class="slide-blue" name="date-display" type="custom-range" min="0" max="60" step="1">
+    </div>
+    <div class="one columns">
+        <div class="unix-ts-info" id="ts-second-disp"></div>
+    </div>
+</div>
+
+<hr class="spacer">
+
+</div>
+</body>
+</html>
