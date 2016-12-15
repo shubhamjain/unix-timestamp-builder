@@ -21,12 +21,21 @@ module.exports = function (grunt) {
             }
         },
 
+        cssmin: {
+          target: {
+            files: {
+              'dist/style.css': ['css/style.css']
+            }
+          }
+        },
+
         browserify: {
             dist: {
                 src: ['lib/timestamp-plus.js'],
                 dest: 'dist/timestamp-plus.js'
             }
         },
+
         uglify: {
             options: {
                 banner: '<%= banner %>'
@@ -36,10 +45,11 @@ module.exports = function (grunt) {
                 dest: 'dist/timestamp-plus.min.js'
             }
         },
+
         watch: {
             lib_test: {
                 files: ['lib/**/*.js', 'test/**/*.js'],
-                tasks: ['browserify','concat', 'uglify']
+                tasks: ['browserify','concat','cssmin', 'uglify']
             }
         }
     });
@@ -48,9 +58,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-browserify');
 
     // Default task
-    grunt.registerTask('default', [ 'browserify','concat', 'uglify']);
+    grunt.registerTask('default', [ 'browserify','concat',  'cssmin', 'uglify']);
 };
 
