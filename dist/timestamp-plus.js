@@ -82,7 +82,7 @@ DateDisplayer.prototype.updateSlider = function(){
 DateDisplayer.prototype.updateLabels = function(){
 	$("#ts-second-disp").html( this.momentDate.format("ss[s]") );
 	$("#ts-minute-disp").html( this.momentDate.format("mm[m]") );
-	$("#ts-hour-disp").html( this.momentDate.format("hh[h]") );
+	$("#ts-hour-disp").html( this.momentDate.format("HH[h]") );
 	$("#ts-date-disp").html( this.momentDate.format("Do")  );
 	$("#ts-month-disp").html( this.momentDate.format("MMM") );
 	$("#ts-year-disp").html( this.momentDate.format("YYYY")  );
