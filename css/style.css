@@ -39,10 +39,11 @@ p {
 
 }
 
-.unix-ts-display {
+
+.unix-ts-display > input {
   font-size: 16px;
-  text-align: center;
   width: 290px;
+  text-align: center;
 }
 
 #ts-timezones {
@@ -52,11 +53,11 @@ p {
 .unix-ts-label  {
     background-color: #37B38B;
     color: #FFF;
-    display: inline-block;
     font-size: 16px;
     padding: 10px;
     margin-bottom: 10px;
     width: 270px;
+    min-height: 27px;
     text-align: center;
 }
 
@@ -77,4 +78,9 @@ p {
 
 .slide-blue + .rangeslider > .rangeslider__handle:after {
   background: #12a0d6;
+}
+
+.swap-button {
+  font-size: 18px;
+  cursor: pointer;
 }

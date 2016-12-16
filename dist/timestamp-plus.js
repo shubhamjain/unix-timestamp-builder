@@ -5,7 +5,9 @@
 global.jQuery = global.$ = require('jquery');
 require('rangeslider.js');
 
-var moment = require('moment-timezone');
+var moment = require('moment-timezone'),
+	unixTsUnit = 'TS_SECONDS';
+
 var renderTimezones = function() {
 
 	// Reduce timezone list as the one shipping with
@@ -39,7 +41,7 @@ var renderTimezones = function() {
 
 		$("<option>")
 			.attr("value", timezone)
-			.html( "(GMT " + utcHours + ") " + timezone.replace('_',' ') )
+			.html( "(GMT " + utcHours + ") " + timezone.replace(/_/g,' ') )
 			.appendTo("#ts-timezones");
 	});
 
@@ -95,7 +97,12 @@ DateDisplayer.prototype.updateParsedDate = function(){
 };
 
 DateDisplayer.prototype.updateText = function(){
-	$("#unix-ts").val( this.momentDate.format("X") );
+	if( unixTsUnit === 'TS_SECONDS' ) {
+		$("#unix-ts").val( this.momentDate.format("X") );
+	} else {
+		$("#unix-ts").val( this.momentDate.format("x") );
+	}
+
 	return this;
 };
 
@@ -119,6 +126,14 @@ document.addEventListener('DOMContentLoaded', function(){
 		}
 	});
 
+	var getUnixTsFromInput = function(){
+		if( unixTsUnit === 'TS_SECONDS' ) {
+			return +$("#unix-ts").val() * 1000;
+		} else {
+			return +$("#unix-ts").val();
+		}
+	};
+
 	renderTimezones();
 
 	var displayObj = new DateDisplayer( (new Date().getTime()) );
@@ -128,18 +143,33 @@ document.addEventListener('DOMContentLoaded', function(){
 		.updateLabels();
 
 	$("#unix-ts").on('input', function(){
-		var displayObj = new DateDisplayer( +this.value * 1000 );
+		var displayObj = new DateDisplayer( getUnixTsFromInput() );
 		displayObj
 			.updateSlider()
 			.updateLabels();
 	});
+
+	$(".swap-button").click(function(){
+		var displayObj = new DateDisplayer( getUnixTsFromInput() );
+
+		if(	unixTsUnit === 'TS_SECONDS' ) {
+			$(".unix-ts-text").text("Unix Timestamp (in ms)");
+			unixTsUnit = 'TS_MILLISECONDS';
+		} else {
+			$(".unix-ts-text").text("Unix Timestamp (in seconds)");
+			unixTsUnit = 'TS_SECONDS';
+		}
+
+		displayObj.updateText();
+	});
+
 
 	$("#ts-timezones").change(function(){
 		moment.tz.setDefault(
 			$(this).children(":selected").val()
 		);
 
-		var displayObj = new DateDisplayer( +$("#unix-ts").val() * 1000 );
+		var displayObj = new DateDisplayer( getUnixTsFromInput() );
 		displayObj
 			.updateSlider()
 			.updateLabels();
