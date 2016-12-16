@@ -16,15 +16,14 @@ var renderTimezones = function() {
     .sort();
 
 	names.sort(function(t1, t2){
-			var t1Offset = moment.tz(t1).utcOffset(),
-				t2Offset = moment.tz(t2).utcOffset();
+		var t1Offset = moment.tz(t1).utcOffset(),
+			t2Offset = moment.tz(t2).utcOffset();
 
-			if( t1Offset > t2Offset ) {
-				return -1;
-			} else {
-				return 1;
-			}
-
+		if( t1Offset > t2Offset ) {
+			return -1;
+		} else {
+			return 1;
+		}
 	}).map(function( timezone ){
 
 		var utcOffsetMins = moment.tz(timezone).utcOffset();
@@ -104,15 +103,18 @@ document.addEventListener('DOMContentLoaded', function(){
 	$("input[type='custom-range']").rangeslider({
 		polyfill: false,
 		onSlide : function(){
+			var displayObj = new DateDisplayer(constructDateFromInputs());
 
 			// Don't update when text input is selected.
 			// It causes cursor to lose it's position.
 			if( ! $("#unix-ts").is(":focus") ){
-				var displayObj = new DateDisplayer(constructDateFromInputs());
-
 				displayObj
 					.updateText()
 					.updateLabels();
+			} else {
+				displayObj
+					.updateLabels();
+
 			}
 		}
 	});
