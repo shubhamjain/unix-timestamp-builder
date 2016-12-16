@@ -47,8 +47,8 @@ module.exports = function (grunt) {
         },
 
         watch: {
-            lib_test: {
-                files: ['lib/**/*.js', 'test/**/*.js'],
+            files: {
+                files: ['lib/**/*.js', 'css/**/*.css'],
                 tasks: ['browserify','concat','cssmin', 'uglify']
             }
         }
