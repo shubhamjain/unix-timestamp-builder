@@ -13,6 +13,12 @@ header {
       margin-top: 8rem;
 }
 
+footer {
+    margin-top: 3em;
+    padding-top: 22px;
+    border-top: 1px solid #bbb;
+}
+
 p {
   font-size: 16px;
 }
