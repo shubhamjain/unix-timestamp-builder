@@ -17,7 +17,7 @@
 </header>
 <div>
     <p>
-     <strong>Unix Timestamp</strong>, also known as Unix Time, or Epoch Time, is the representation of time instants as the number of seconds passed since January 1, 1970 (UTC). It's often preferred as a time storage format because of its timezone-independent nature. An integer representation, however, makes it cumbersome to query on the data type. This builder is a small app to address that problem.
+     <strong>Unix Timestamp</strong>, also known as Unix Time, or Epoch Time, is the representation of time instants as the number of seconds passed since January 1, 1970 (UTC). It's often preferred as a time storage format because of its timezone-independent nature. An integer representation, however, makes it cumbersome to query on the data type. This is a small application to address that problem.
      It makes it easier to parse and create Unix timestamps and see their equivalent dates in different timezones.
     </p>
 </div>
@@ -30,7 +30,7 @@
     <div class="four columns u-pull-right">
         <div class="unix-ts-label">
             <div class="unix-ts-text u-pull-left"> Unix Timestamp (in seconds) </div>
-            <div class="swap-button  u-pull-right">&#x21c4;</div>
+            <div class="swap-button  u-pull-right" title="Switch to Milliseconds">&#x21c4;</div>
         </div>
         <div class="unix-ts-display">
             <input type="text" class="form-control center" id="unix-ts">
@@ -97,7 +97,11 @@
     </div>
 </div>
 
-<hr class="spacer">
+<footer>
+    <div class="text-right">
+        <a href="https://github.com/shubhamjain/unix-timestamp-builder">Github Source</a>  &nbsp; | &nbsp;   <a href="https://shubhamjain.co/about">Contact Me</a>
+    </div>
+</footer>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
